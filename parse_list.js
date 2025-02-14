@@ -15,5 +15,5 @@ json.forEach(j => {
 	let episode = j.media.nextAiringEpisode.episode;
 	let timestamp = j.media.nextAiringEpisode.airingAt;
 	let d = new Date(timestamp * 1000);
-	console.log(`${format(d)} ubuntu curl -sX GET "http://localhost:8080/notify" -H "Content-Type: application/json" --data @<(echo "{\\"name\\": \\"${name}\\", \\"episode\\": ${episode}}") > /dev/null 2>&1`)
+	console.log(`${format(d)} ubuntu curl -sX GET "http://localhost:8080/notify" -H "Content-Type: application/json" -d '{"name": "${name}", "episode": ${episode}}' > /dev/null 2>&1`)
 });
