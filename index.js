@@ -4,7 +4,8 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds]});
 let gian;
 client.on(Events.ClientReady, async rc => {
 	console.log('hello from discord bot');
-	gian = await rc.users.fetch('247492668131770369');	
+	gian = await rc.users.fetch('247492668131770369');
+	client.user.setPresence({status: 'online'});
 });
 
 const app = express();
