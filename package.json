@@ -1,0 +1,16 @@
+{
+  "name": "anime_notifications",
+  "version": "1.0.0",
+  "description": "Discord bot that will dm me when anime episodes drop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gian Pena",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.18.0",
+    "express": "^4.21.2"
+  },
+  "type": "module"
+}

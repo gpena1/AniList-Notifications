@@ -1,0 +1,15 @@
+query ($name: String!) {
+  Page(page: 1, perPage: 20) {
+    mediaList(userName: $name, type: ANIME, status: CURRENT){
+      media {
+        title {
+          english
+        }
+        nextAiringEpisode {
+          airingAt
+          episode
+        }
+      }
+    }
+  }
+}
