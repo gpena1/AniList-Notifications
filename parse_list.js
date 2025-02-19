@@ -4,7 +4,7 @@ let json = process.argv[2];
 json = JSON.parse(json).data.Page.mediaList;
 json = json.filter( entry => entry.media.nextAiringEpisode );
 
-// 3 seconds is the maximum I will allow two timestamps to be for equality.
+// 3 seconds is the maximum I will allow two timestamps to be apart for equality.
 let tolerance = 3000; 
 
 json.forEach(j => {
