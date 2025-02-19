@@ -1,10 +1,10 @@
 import {Client, Events, GatewayIntentBits } from 'discord.js';
 import express from 'express'; 
 const client = new Client({ intents: [GatewayIntentBits.Guilds]});
-let gian;
+let user;
 client.on(Events.ClientReady, async rc => {
 	console.log('hello from discord bot');
-	gian = await rc.users.fetch('247492668131770369');
+	user = await rc.users.fetch(process.env.USER_ID);
 	client.user.setPresence({status: 'online'});
 });
 
@@ -18,7 +18,7 @@ app.post('/notify', async (req, res) => {
 	console.log(json);
 	let name = json.name;
 	let episode = json.episode;
-	gian.send(`Episode ${episode} of ${name} has aired!`);
+	user.send(`Episode ${episode} of ${name} has aired!`);
 	res.send('OK');
 });
 
