@@ -13,7 +13,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
 	res.send('hello :3');
 });
-app.get('/notify', async (req, res) => {
+app.post('/notify', async (req, res) => {
 	let json = req.body;
 	console.log(json);
 	let name = json.name;
