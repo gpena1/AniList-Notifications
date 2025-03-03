@@ -7,8 +7,8 @@ console.log(json);
 json = json.filter( entry => entry.media.nextAiringEpisode );
 console.log(json);
 
-// 3 seconds is the maximum I will allow two timestamps to be apart for equality.
-let tolerance = 3000; 
+// 8 seconds is the maximum I will allow two timestamps to be apart for equality.
+let tolerance = 8000; 
 
 json.forEach(j => {
 	let name = j.media.title.english
