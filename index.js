@@ -7,7 +7,32 @@ client.on(Events.ClientReady, async rc => {
 	user = await rc.users.fetch(process.env.USER_ID);
 	client.user.setPresence({status: 'online'});
 });
-
+client.on(Events.InteractionCreate, async interaction => {
+	let n = interaction.options.data[0].value;
+	if(n > 100){
+		interaction.reply(`Error: \`n\` must be less than 100. You entered: \`${n}\`.`);
+		return;
+	}
+	interaction.reply(`Deleting \`${n}\` messages...`);
+	let gian;
+	try{
+		gian = await client.users.fetch('247492668131770369');
+	}catch(e){
+		console.log('Error with API request fetching my account:');
+		console.log(e);
+		return;
+	}
+	try{
+		let channel = await gian.createDM();
+		let messages = await channel.messages.fetch({limit: n});
+		messages.filter(msg => msg.author.id == client.user.id);
+		await Promise.all(messages.map(msg => msg.delete()));
+	}catch(e){
+		console.log('Error with purging DM channel:');
+		console.log(e);
+		return;
+	}
+});
 const app = express();
 app.use(express.json());
 app.get('/', (req, res) => {
